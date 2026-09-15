@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ブラウザですぐに遊べる、落ち着いたデザインの15パズル。"
+    />
+    <title>ひとやすみパズル — 15 Puzzle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="ひとやすみパズル ホーム">
+          <span class="brand-mark" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span>ひとやすみパズル</span>
+        </a>
+        <button class="sound-button" id="soundButton" type="button" aria-pressed="true">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M4 9v6h4l5 4V5L8 9H4Z" />
+            <path class="sound-wave" d="M16 9.5c.8.7 1.2 1.5 1.2 2.5s-.4 1.8-1.2 2.5M18.5 7c1.4 1.3 2.1 3 2.1 5s-.7 3.7-2.1 5" />
+          </svg>
+          <span>サウンド</span>
+        </button>
+      </header>
+
+      <section class="game-layout" aria-labelledby="game-title">
+        <aside class="intro-panel">
+          <p class="eyebrow">15 PUZZLE</p>
+          <h1 id="game-title">すこしだけ、<br /><em>頭のストレッチ。</em></h1>
+          <p class="intro-copy">
+            数字を順番に並べて、すっきり。<br />空いているマスへタイルを動かそう。
+          </p>
+
+          <div class="rule-card">
+            <span class="rule-number">01</span>
+            <div>
+              <h2>あそびかた</h2>
+              <p>空白のとなりのタイルをクリック。<br />1〜15の順番に並べたら完成です。</p>
+            </div>
+          </div>
+
+          <div class="keyboard-hint">
+            <span class="keys" aria-hidden="true"><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd></span>
+            <span>キーボードでも操作できます</span>
+          </div>
+        </aside>
+
+        <section class="game-panel" aria-label="15パズル ゲーム">
+          <div class="stats" aria-live="polite">
+            <div class="stat">
+              <span>うごかした数</span>
+              <strong id="moveCount">0</strong>
+              <small>moves</small>
+            </div>
+            <div class="stat stat-time">
+              <span>かかった時間</span>
+              <strong id="timer">00:00</strong>
+              <small>time</small>
+            </div>
+            <div class="stat best-stat">
+              <span>ベスト</span>
+              <strong id="bestScore">—</strong>
+              <small>moves</small>
+            </div>
+          </div>
+
+          <div class="board-wrap">
+            <div
+              class="board"
+              id="puzzleBoard"
+              role="grid"
+              aria-label="15パズル盤面"
+              aria-describedby="boardStatus"
+            ></div>
+            <p id="boardStatus" class="sr-only" aria-live="polite"></p>
+          </div>
+
+          <div class="controls">
+            <button class="primary-button" id="shuffleButton" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 4h3v3M21 4l-5 5c-1.5 1.5-2.5 3-3.5 5S10 18 7 18H3M18 20h3v-3M21 20l-5-5M3 6h4c1.8 0 3.1.7 4.2 1.8" />
+              </svg>
+              まぜなおす
+            </button>
+            <button class="text-button" id="resetButton" type="button">はじめから</button>
+          </div>
+        </section>
+      </section>
+
+      <footer>
+        <p>焦らず、ひとつずつ。</p>
+        <span>© 2026 HITOYASUMI PUZZLE</span>
+      </footer>
+    </main>
+
+    <dialog class="win-dialog" id="winDialog">
+      <div class="confetti-mark" aria-hidden="true">✦</div>
+      <p class="eyebrow">COMPLETE!</p>
+      <h2>きれいに揃いました。</h2>
+      <p>おつかれさまでした。<br /><strong id="resultText"></strong></p>
+      <button class="primary-button" id="playAgainButton" type="button">もう一度あそぶ</button>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
